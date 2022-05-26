@@ -1,6 +1,5 @@
 
 from dataclasses import dataclass
-from random import shuffle
 from typing import Sequence
 from action import Action
 
@@ -14,7 +13,6 @@ class Portfolio:
     def __init__(self, actions):
         self.actions = actions
         self.__compute_price()
-
     
     @property
     def price(self):
