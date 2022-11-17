@@ -2,7 +2,7 @@
 # On pioche au hasard
 # On vérifie que le prix de l'action aditionné au prix des autres actions piocher ne dépassent pas les 500 euro
 # Et répeter tant qu'il y a des action a piocher
-from utils import chooce_file
+from utils import chooce_file, load_from_csv
 from random import randint
 from time import time
 
@@ -27,16 +27,17 @@ def glouton(actions):
     return  prix , profit, name
 
 def main():
-    start = time()
     best_profit = 0
     best_prix = 0
     best_name = []
     # Fonction qui choisis un fichier
-    actions = chooce_file()
-    max_iteraction = 100000
+    data = load_from_csv("dataset1_Python+P7.csv")
+    start = time()
+
+    data_len = len(data)
     # on choisis une valeur max et on fais une boucle en itérant dessus
-    for _ in range(max_iteraction): 
-        prix , profit , name = glouton(actions)
+    for _ in range(data_len): 
+        prix , profit , name = glouton(data)
         if best_profit < profit:
             best_profit = profit
             best_prix = prix
